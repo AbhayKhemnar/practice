@@ -2,7 +2,7 @@ import './card.css';
 
 export default function Card(props)
 {
-  const {Job_profile,Name,Describtion}=props
+  const {img,Job_profile,Name,Describtion}=props
 
    function Alert(){
      alert(Name)
@@ -11,23 +11,23 @@ export default function Card(props)
    <div class ="Card ">
      <div class="Upper-contaner">
      <div class="Image">
-        <img src ="" alt={Name}/>
+        <img class="img" src ={img} alt={Name}/>
         </div>
       </div>  
       <div class ="Lower-contaner">
-      <div class ="job_profile">
-          <p>{Job_profile}</p>
+      
+          <p class ="job_profile" >{Job_profile}</p>
+
+      
+        <h2 class ="Name">{Name}</h2>
+    
+      
+        <p class="Describtion">{Describtion}</p>
+      
+      
+        <button class="Button" onClick={Alert} >Click to see me</button>
+      
       </div>
-      <div class ="Name">
-        <h2>{Name}</h2>
-      </div>
-      <div class="Describtion">
-        <p>{Describtion}</p>
-      </div>
-      <div class="Button">
-        <button onClick={Alert} >Click to see me</button>
-      </div>
-    </div>
     </div>
     )
 }
