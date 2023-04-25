@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import Card from "./components/button/card";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div class='App' >
+      <div>
+  
+         <Card Name="Abhay Khemnar" Job_profile="Front-End web devloper" Describtion="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
+         <Card Name="Atharva Vennu" Job_profile="Full Stack Developer" Describtion="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
+         <Card Name="Sourabh Wabale" Job_profile="Data analist" Describtion="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" />
+         
+      </div>
+      
     </div>
   );
 }
