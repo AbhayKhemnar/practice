@@ -1,13 +1,7 @@
-.First_row{
+.App{
   display: flex;
-  margin-top: 20px;
+  align-items: center;
   justify-content: center;
-}
-  
+  margin-top: 300px;
 
-
-.Second_row{
-  display: flex;
-  justify-content: center;
-  margin: 20px;
 }
