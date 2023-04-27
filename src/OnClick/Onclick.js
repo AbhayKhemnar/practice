@@ -3,29 +3,26 @@ import './Onclick.css'
 
 export default function OnClick(){
 
-    let [count , setCount]= useState(1)
-    function Incress(){
-       let newcount=count+1;
-       setCount(newcount)
-    }
+   let [Name , setName]= useState()
+   let [UpdatedName , setUpdatedName]=useState("________")
+ 
 
-    function Decress(){
-        if(count>0){
-        let newcount=count-1;
-        setCount(newcount)
-     }if(count===0){
-        alert("Can not go below 0")
-     }
-    }
+   function DisplayName(){
+        setUpdatedName(Name)
+         
+   }
 
+   function handleName(event){
+    setName(event.target.value)
+      
+   }
 
     return(
 
         <div class ="contain">
-            <p class="Count">{count}</p>
-            <button onClick={Incress}>Click me to Incress</button>
-            <br/>
-            <button onClick={Decress}>Click me to decress</button>
+            <input onChange={handleName} placeholder="Enter Your Name" ></input>
+            <button onClick={DisplayName} >Summit</button>
+            <h1>Your Name is {UpdatedName}</h1>
         </div>
         
         
