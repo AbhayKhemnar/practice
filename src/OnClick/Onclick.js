@@ -1,56 +1,74 @@
-import { useState} from "react";
+
+import { useState } from 'react'
+//import axios from 'axios';
 import './Onclick.css'
 
 
 
 export default function OnClick(){
-
-  let [Data,setData]=useState([])
-
-
-  fetch("https://reqres.in/api/users/")
-  .then((responce)=>responce.json())
-  .then((data)=>setData(data.data))
-  .catch((error)=>console.log(error))
-   console.log(Data)
-     
+let [MobileNumber,setMobileNumber]=useState("")
+//let [Number,setNumber]=useState(MobileNumber)
 
 
-return(
-  <div>
-<div class="container">
-  {
-    Data.map((x)=>((
-       <div class="card">
-          <div class="Upper_section">
-              <img
-              class="img"
-              height={100}
-              width={100}
-              src={x.avatar} 
-              alt={x.first_name}
-              />
-          </div>
-          <div class="Lower_section">
-              <h3>id :{x.id}</h3>
-              <h1>{x.first_name }   {x.last_name}</h1>
-              <h3>Email:{x.email}</h3>
-           </div>
+const mobileRegex = /^[0-9]{10}$/;
 
-        </div>
-  ))
-    )
-
-
+function GetMobileNumber(e){
+    setMobileNumber(e.target.value)
+  
+}
+ function summitNumber(){
+        
+          console.log(MobileNumber)
+              if (!mobileRegex.test(MobileNumber)) {
+                alert('Please enter a valid 10-digit mobile number.');
+              }else{
+               
+                fetch('https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP', {
+                  
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ mobile:MobileNumber }),
+                })
+                  .then((response) => {
+                    if (!response.ok) {
+                      alert('Failed to generate OTP. Please try again.');
+                    } else{
+                    alert("OtP send ")
+                        setMobileNumber("")
+                       }
+              })
+                  .catch((error) => {
+                    alert('Failed to connect to the server. Please try again later.');
+                    console.error(error);
+                  });
+              }
+    
 
 }
 
-</div>
-<div>
-</div>
-</div>
-)
+ 
 
+return(
+  <div>
+    <h1>{Number}</h1>
+    <input
+    type="tel"
+    name="Mobile-Number"
+    minLength={10}
+    maxLength={10}
+    onChange={GetMobileNumber}
+    value={MobileNumber}
+    />
+    <button
+    onClick={summitNumber}
+    >Get Otp  </button>
 
+  
+  </div>
+  
+
+  )
 
 }
