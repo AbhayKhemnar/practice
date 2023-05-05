@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-//import axios from 'axios';
+import axios from 'axios';
 import './Onclick.css'
 
 
@@ -18,21 +18,16 @@ function GetMobileNumber(e){
 }
  function summitNumber(){
         
-          console.log(MobileNumber)
+          //console.log(MobileNumber)
               if (!mobileRegex.test(MobileNumber)) {
                 alert('Please enter a valid 10-digit mobile number.');
               }else{
                
-                fetch('https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP', {
-                  
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ mobile:MobileNumber }),
-                })
+                
+                   axios.post('https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP', {mobile:MobileNumber})
                   .then((response) => {
-                    if (!response.ok) {
+                        const data=response.data
+                    if (!data.txnId) {
                       alert('Failed to generate OTP. Please try again.');
                     } else{
                     alert("OtP send ")
@@ -41,8 +36,9 @@ function GetMobileNumber(e){
               })
                   .catch((error) => {
                     alert('Failed to connect to the server. Please try again later.');
-                    console.error(error);
+                    console.log(error);
                   });
+                
               }
     
 
@@ -72,3 +68,4 @@ return(
   )
 
 }
+
